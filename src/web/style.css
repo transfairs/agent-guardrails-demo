@@ -1,0 +1,26 @@
+:root{--bg:#f7f7f5;--fg:#1c1c1a;--mut:#6b6b66;--card:#fff;--bd:#e2e2dc;--ok:#1a7f4b;--bad:#b3261e;--acc:#2f5fd0;--warn:#a35a00}
+@media (prefers-color-scheme:dark){:root{--bg:#161615;--fg:#eeeeea;--mut:#9a9a93;--card:#202020;--bd:#33332f;--ok:#4fc58a;--bad:#ff8a80;--acc:#8fb0ff;--warn:#f0b35a}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.5 system-ui,sans-serif}
+main{max-width:760px;margin:0 auto;padding:32px 16px}
+h1{font-size:1.6rem;margin:0 0 8px}
+header p{color:var(--mut);margin:0 0 24px}
+code{font-family:ui-monospace,monospace;font-size:.9em}
+.controls{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;align-items:end}
+label{display:grid;gap:6px;font-size:.9rem;color:var(--mut)}
+output{color:var(--fg);font-weight:600;margin-left:6px}
+select,button{font:inherit;padding:8px 10px;border-radius:8px;border:1px solid var(--bd);background:var(--bg);color:var(--fg)}
+button{background:var(--acc);color:#fff;border-color:transparent;cursor:pointer;font-weight:600}
+button:disabled{opacity:.5;cursor:default}
+#timeline{list-style:none;margin:24px 0;padding:0 0 0 18px;border-left:2px solid var(--bd)}
+#timeline li{position:relative;background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:10px 14px;margin:0 0 12px;animation:in .25s ease-out}
+#timeline li::before{content:"";position:absolute;left:-26px;top:16px;width:10px;height:10px;border-radius:50%;background:var(--bd)}
+#timeline li small{display:block;color:var(--mut);font-size:.75rem;text-transform:uppercase;letter-spacing:.05em}
+#timeline li pre{margin:4px 0 0;white-space:pre-wrap;word-break:break-word;font:.85rem ui-monospace,monospace}
+li.tool_call::before{background:var(--acc)} li.tool_result::before,li.final::before{background:var(--ok)}
+li.blocked{border-color:var(--bad)} li.blocked::before{background:var(--bad)} li.blocked small{color:var(--bad)}
+li.escalated{border-color:var(--warn)}
+footer{color:var(--mut);font-size:.85rem}
+a{color:var(--acc)}
+@keyframes in{from{opacity:0;transform:translateY(6px)}}
+@media (prefers-reduced-motion:reduce){#timeline li{animation:none}}

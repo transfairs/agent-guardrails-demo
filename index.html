@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agent Guardrails Demo</title>
+<link rel="stylesheet" href="/src/web/style.css">
+</head>
+<body>
+<main>
+  <header>
+    <h1>Agent guardrails, visualised</h1>
+    <p>A tool-using agent loop where business rules are enforced by a <b>deterministic hook in code</b>. Change the limit or the amount and watch the agent adapt. The agent is mocked, but it uses the real Messages API shapes: <code>stop_reason</code>, <code>tool_use</code>, <code>tool_result</code>.</p>
+  </header>
+  <section class="controls">
+    <label>Order
+      <select id="order"><option value="A-1001">A-1001 (Mia, 49.90)</option><option value="A-2002">A-2002 (Jonas, 899.00)</option></select>
+    </label>
+    <label>Refund amount (EUR) <output id="amountOut"></output>
+      <input id="amount" type="range" min="10" max="1000" step="10" value="50">
+    </label>
+    <label>Hook limit (EUR) <output id="limitOut"></output>
+      <input id="limit" type="range" min="0" max="1000" step="10" value="100">
+    </label>
+    <button id="run">Run agent</button>
+  </section>
+  <ol id="timeline" aria-live="polite"></ol>
+</main>
+<script type="module" src="/src/web/main.ts"></script>
+</body>
+</html>
